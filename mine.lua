@@ -17,6 +17,10 @@ local function startMine20()
 		minedDepth = minedDepth + 1
 		print("mined quad.. current mined depth:", minedDepth)
 
+		if inventory.isFull() then
+			print("inventory full.. lets go home")
+			return false
+		end
 		if minedDepth >= depth then
 			return true
 		end
@@ -44,7 +48,6 @@ while reachedBottom == false do
 	nav.goHome()
 	inventory.refuel(10000)
 	inventory.unload("front", true)
-	sleep(3)
 
 	nav.goTo(miningStartPosition.x, miningStartPosition.y, miningStartPosition.z)
 	nav.goTo(tempPos.x, tempPos.y, tempPos.z)
@@ -58,7 +61,6 @@ nav.goTo(miningStartPosition.x, miningStartPosition.y, miningStartPosition.z)
 nav.goHome()
 inventory.refuel(10000)
 inventory.unload("front", false)
-sleep(3)
 nav.goTo(miningStartPosition.x, miningStartPosition.y, miningStartPosition.z)
 nav.turnTo(miningStartFacing)
 
