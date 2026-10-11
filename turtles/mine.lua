@@ -2,10 +2,17 @@ local nav = require("navigation")
 local inventory = require("inventory")
 local mineQuad = require("mineQuad")
 local args = { ... }
-local depth = tonumber(args[1]) or 300
+local depth = tonumber(args[1]) or 0
+local rows = tonumber(args[2]) or 0
+local cols = tonumber(args[3]) or 0
 local minedDepth = 0
 
-inventory.refuel(10000)
+if depth == 0 or rows == 0 or cols == 0 then
+	print("Usage: mine [depth] [rows] [cols]")
+	return
+end
+
+inventory.refuel(20000)
 nav.init()
 
 print("Starting miner for depth: ", depth)
@@ -13,7 +20,8 @@ print("Starting miner for depth: ", depth)
 local function startMine20()
 	local startMinedDepth = minedDepth
 	for i = 1, 20 do
-		mineQuad.run()
+		-- mineQuad.run()
+		mineQuad.runCustomSize(rows, cols)
 
 		minedDepth = minedDepth + 1
 		print("mined quad.. current mined depth:", minedDepth)
@@ -46,7 +54,7 @@ while reachedBottom == false do
 	nav.goTo(miningStartPosition.x, miningStartPosition.y, miningStartPosition.z)
 	-- nav.turnTo(miningStartFacing)
 	nav.goHome()
-	inventory.refuel(10000)
+	inventory.refuel(20000)
 	inventory.unload("front", true)
 
 	nav.goTo(miningStartPosition.x, miningStartPosition.y, miningStartPosition.z)
@@ -59,7 +67,7 @@ print("reached bottom.. lets go home")
 
 nav.goTo(miningStartPosition.x, miningStartPosition.y, miningStartPosition.z)
 nav.goHome()
-inventory.refuel(10000)
+inventory.refuel(20000)
 inventory.unload("front", false)
 nav.goTo(miningStartPosition.x, miningStartPosition.y, miningStartPosition.z)
 nav.turnTo(miningStartFacing)

@@ -35,4 +35,29 @@ function mineQuad.run()
 	nav.turnRight()
 end
 
+function mineQuad.runCustomSize(rows, cols)
+	local startPos = nav.getPosition()
+	local startFacing = nav.getFacing()
+
+	local turnRight = true
+	for row = 1, rows do
+		for col = 1, cols do
+			turtle.dig()
+			nav.forward(1)
+		end
+		if turnRight then
+			nav.turnRight()
+			turtle.dig()
+			nav.forward(1)
+			nav.turnRight()
+		else
+			nav.turnLeft()
+			turtle.dig()
+			nav.forward(1)
+			nav.turnLeft()
+		end
+		turnRight = ! turnRight
+	end
+end
+
 return mineQuad
