@@ -1,5 +1,7 @@
 local nav = require("navigation")
 
+nav.init()
+
 local function digLine()
 	for i = 1, 3 do
 		turtle.dig()
