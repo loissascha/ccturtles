@@ -1,6 +1,6 @@
 local nav = require("navigation")
 
-nav.init()
+local mineQuad = {}
 
 local function digLine()
 	for i = 1, 3 do
@@ -28,7 +28,11 @@ local function digQuad()
 	digLine()
 end
 
-digQuad()
-nav.turnRight()
-nav.forward(3)
-nav.turnRight()
+function mineQuad.run()
+	digQuad()
+	nav.turnRight()
+	nav.forward(3)
+	nav.turnRight()
+end
+
+return mineQuad

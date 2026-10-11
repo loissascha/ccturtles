@@ -1,5 +1,6 @@
 local nav = require("navigation")
 local inventory = require("inventory")
+local mineQuad = require("mineQuad")
 local args = { ... }
 local depth = tonumber(args[1]) or 300
 local minedDepth = 0
@@ -11,7 +12,7 @@ print("Starting miner...")
 local function startMine20()
 	local startMinedDepth = minedDepth
 	for i = 1, 20 do
-		shell.run("mineQuad.lua")
+		mineQuad.run()
 
 		minedDepth = minedDepth + 1
 
