@@ -32,7 +32,7 @@ end
 local miningStartPosition = nav.getPosition()
 local miningStartFacing = nav.getFacing()
 
-inventory.refuel(1000)
+inventory.refuel(10000)
 local reachedBottom = startMine20()
 while reachedBottom == false do
 	print("not at bottom yet. going for unload and coming back!")
@@ -42,8 +42,8 @@ while reachedBottom == false do
 	nav.goTo(miningStartPosition.x, miningStartPosition.y, miningStartPosition.z)
 	-- nav.turnTo(miningStartFacing)
 	nav.goHome()
-	inventory.refuel(1000)
-	inventory.unload("front", false)
+	inventory.refuel(10000)
+	inventory.unload("front", true)
 	sleep(3)
 
 	nav.goTo(miningStartPosition.x, miningStartPosition.y, miningStartPosition.z)
@@ -56,7 +56,7 @@ print("reached bottom.. lets go home")
 
 nav.goTo(miningStartPosition.x, miningStartPosition.y, miningStartPosition.z)
 nav.goHome()
-inventory.refuel(1000)
+inventory.refuel(10000)
 inventory.unload("front", false)
 sleep(3)
 nav.goTo(miningStartPosition.x, miningStartPosition.y, miningStartPosition.z)
