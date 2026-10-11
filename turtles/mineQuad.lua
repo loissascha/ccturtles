@@ -45,18 +45,20 @@ function mineQuad.runCustomSize(rows, cols)
 			turtle.dig()
 			nav.forward(1)
 		end
-		if turnRight then
-			nav.turnRight()
-			turtle.dig()
-			nav.forward(1)
-			nav.turnRight()
-			turnRight = false
-		else
-			nav.turnLeft()
-			turtle.dig()
-			nav.forward(1)
-			nav.turnLeft()
-			turnRight = true
+		if row < rows then
+			if turnRight then
+				nav.turnRight()
+				turtle.dig()
+				nav.forward(1)
+				nav.turnRight()
+				turnRight = false
+			else
+				nav.turnLeft()
+				turtle.dig()
+				nav.forward(1)
+				nav.turnLeft()
+				turnRight = true
+			end
 		end
 	end
 
