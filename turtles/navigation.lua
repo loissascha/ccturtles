@@ -293,13 +293,20 @@ function nav.goTo(x, y, z)
 
 	local current = locate()
 
-	-- Y axis
-	local dy = y - current.y
+	local firstY = false
+	if y > current.y then
+		firstY = true
+	end
 
-	if dy > 0 then
-		nav.up(dy)
-	elseif dy < 0 then
-		nav.down(math.abs(dy))
+	if firstY == true then
+		-- Y axis
+		local dy = y - current.y
+
+		if dy > 0 then
+			nav.up(dy)
+		elseif dy < 0 then
+			nav.down(math.abs(dy))
+		end
 	end
 
 	-- X axis
@@ -316,6 +323,17 @@ function nav.goTo(x, y, z)
 	if dz ~= 0 then
 		nav.turnTo(dz > 0 and "south" or "north")
 		nav.forward(math.abs(dz))
+	end
+
+	if firstY == false then
+		-- Y axis
+		local dy = y - current.y
+
+		if dy > 0 then
+			nav.up(dy)
+		elseif dy < 0 then
+			nav.down(math.abs(dy))
+		end
 	end
 
 
