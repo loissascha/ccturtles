@@ -29,6 +29,7 @@ end
 local miningStartPosition = nav.getPosition()
 local miningStartFacing = nav.getFacing()
 
+inventory.refuel(1000)
 local reachedBottom = startMine20()
 while reachedBottom == false do
 	local tempPos = nav.getPosition()
