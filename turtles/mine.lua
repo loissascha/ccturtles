@@ -61,6 +61,9 @@ while reachedBottom == false do
 	nav.goTo(tempPos.x, tempPos.y, tempPos.z)
 	nav.turnTo(tempFacing)
 
+	turtle.digDown()
+	nav.down(1)
+
 	reachedBottom = startMine20()
 end
 print("reached bottom.. lets go home")
