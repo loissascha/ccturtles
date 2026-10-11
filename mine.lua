@@ -5,6 +5,7 @@ local args = { ... }
 local depth = tonumber(args[1]) or 300
 local minedDepth = 0
 
+inventory.refuel(10000)
 nav.init()
 
 print("Starting miner for depth: ", depth)
@@ -36,7 +37,6 @@ end
 local miningStartPosition = nav.getPosition()
 local miningStartFacing = nav.getFacing()
 
-inventory.refuel(10000)
 local reachedBottom = startMine20()
 while reachedBottom == false do
 	print("not at bottom yet. going for unload and coming back!")
