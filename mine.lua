@@ -1,4 +1,5 @@
 local nav = require("navigation")
+local inventory = require("inventory")
 local args = { ... }
 local depth = tonumber(args[1]) or 300
 local minedDepth = 0
@@ -36,7 +37,8 @@ while reachedBottom == false do
 	nav.goTo(miningStartPosition.x, miningStartPosition.y, miningStartPosition.z)
 	-- nav.turnTo(miningStartFacing)
 	nav.goHome()
-	-- TODO: ausladen
+	inventory.refuel(1000)
+	inventory.unload("front", false)
 	sleep(3)
 
 	nav.goTo(miningStartPosition.x, miningStartPosition.y, miningStartPosition.z)
@@ -48,7 +50,8 @@ end
 
 nav.goTo(miningStartPosition.x, miningStartPosition.y, miningStartPosition.z)
 nav.goHome()
--- TODO: ausladen
+inventory.refuel(1000)
+inventory.unload("front", false)
 sleep(3)
 nav.goTo(miningStartPosition.x, miningStartPosition.y, miningStartPosition.z)
 nav.turnTo(miningStartFacing)
