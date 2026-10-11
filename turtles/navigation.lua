@@ -212,18 +212,22 @@ local function move(action, steps)
 end
 
 function nav.forward(steps)
+	print("forward", steps)
 	move(turtle.forward, steps)
 end
 
 function nav.back(steps)
+	print("back", steps)
 	move(turtle.back, steps)
 end
 
 function nav.up(steps)
+	print("up", steps)
 	move(turtle.up, steps)
 end
 
 function nav.down(steps)
+	print("down", steps)
 	move(turtle.down, steps)
 end
 
@@ -241,6 +245,7 @@ end
 
 function nav.turnRight()
 	ensureReady()
+	print("turnRight")
 	assert(turtle.turnRight())
 
 	local index = facingIndex(facing)
@@ -249,6 +254,7 @@ end
 
 function nav.turnLeft()
 	ensureReady()
+	print("turnLeft")
 	assert(turtle.turnLeft())
 
 	local index = facingIndex(facing)
